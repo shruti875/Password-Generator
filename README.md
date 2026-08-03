@@ -35,6 +35,8 @@ SecurePass-Generator/
 │   └── (visualizations screenshots)
 │
 └── README.md
+```
+
 ⚙️ Project Workflow
 1️⃣ Core Structure (HTML)
 
@@ -77,7 +79,7 @@ Added temporary "Copied!" visual feedback using CSS transitions
 
 📈 Sample Visualizations
 🎬 Main Interface
-![Main UI](output.png)
+![Main UI](images/output.png)
 
 🚀 Bonus Feature
 A smooth, continuous 15-second animated gradient background built purely with CSS @keyframes to enhance the premium feel of the application.
