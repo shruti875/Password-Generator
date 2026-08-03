@@ -32,7 +32,7 @@ SecurePass-Generator/
 │
 ├── index.html           (Main HTML, CSS, and JS)
 ├── images/
-│   └── (visualizations screenshots)
+│   └── (Ouput screenshots)
 │
 └── README.md
 ```
@@ -79,7 +79,7 @@ Added temporary "Copied!" visual feedback using CSS transitions
 
 ## 📈 Sample Visualizations
 🎬 Main Interface
-![Main UI](images\output.png)
+![Ouput](images/output.png)
 
 ## 🚀 Bonus Feature
 A smooth, continuous 15-second animated gradient background built purely with CSS @keyframes to enhance the premium feel of the application.
