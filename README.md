@@ -44,7 +44,7 @@ Created the semantic skeleton of the application
 
 Integrated external CDNs for fonts and icons
 
-## 2️⃣ Styling & UI (CSS)
+ 2️⃣ Styling & UI (CSS)
 
 Applied the animated gradient background
 
@@ -52,7 +52,7 @@ Built the frosted glass effect using backdrop-filter
 
 Customized the range slider to look modern and minimalistic
 
-## 3️⃣ Application Logic (JavaScript)
+3️⃣ Application Logic (JavaScript)
 
 Created character pools (letters, numbers, symbols)
 
@@ -60,7 +60,7 @@ Built the randomization loop based on slider input
 
 Linked the generate button to update the DOM
 
-## 4️⃣ Interactivity & Feedback
+4️⃣ Interactivity & Feedback
 
 Integrated the navigator.clipboard API
 
