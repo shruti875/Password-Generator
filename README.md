@@ -37,14 +37,14 @@ SecurePass-Generator/
 └── README.md
 ```
 
-⚙️ Project Workflow
+## ⚙️ Project Workflow
 1️⃣ Core Structure (HTML)
 
 Created the semantic skeleton of the application
 
 Integrated external CDNs for fonts and icons
 
-2️⃣ Styling & UI (CSS)
+## 2️⃣ Styling & UI (CSS)
 
 Applied the animated gradient background
 
@@ -52,7 +52,7 @@ Built the frosted glass effect using backdrop-filter
 
 Customized the range slider to look modern and minimalistic
 
-3️⃣ Application Logic (JavaScript)
+## 3️⃣ Application Logic (JavaScript)
 
 Created character pools (letters, numbers, symbols)
 
@@ -60,13 +60,13 @@ Built the randomization loop based on slider input
 
 Linked the generate button to update the DOM
 
-4️⃣ Interactivity & Feedback
+## 4️⃣ Interactivity & Feedback
 
 Integrated the navigator.clipboard API
 
 Added temporary "Copied!" visual feedback using CSS transitions
 
-📊 Key Features & Insights
+## 📊 Key Features & Insights
 📌 Zero Dependencies: Runs entirely in the browser without a backend or frameworks
 
 📌 Highly Secure: Passwords are generated strictly on the client-side, ensuring data privacy
@@ -77,29 +77,32 @@ Added temporary "Copied!" visual feedback using CSS transitions
 
 📌 Instant Feedback: Micro-animations provide immediate confirmation when copying
 
-📈 Sample Visualizations
+## 📈 Sample Visualizations
 🎬 Main Interface
-![Main UI](images/output.png)
+![Main UI](images\output.png)
 
-🚀 Bonus Feature
+## 🚀 Bonus Feature
 A smooth, continuous 15-second animated gradient background built purely with CSS @keyframes to enhance the premium feel of the application.
 
-▶️ How to Run This Project
+## ▶️ How to Run This Project
+
 Step 1: Clone Repository
 
+```
 Bash
 git clone [https://github.com/shruti875/Password-Generator.git](https://github.com/shruti875/Password-Generator.git)
 Step 2: Navigate to Project Folder
-
 Bash
 cd SecurePass-Generator
+
 Step 3: Open in Browser
 You don't need any local servers! Simply double-click the index.html file to open it in your default web browser.
+```
 
-📦 requirements.txt
+## 📦 requirements.txt
 No Python or Node.js requirements needed! Just a standard, modern web browser.
 
-💡 Learning Outcomes
+## 💡 Learning Outcomes
 Practical understanding of DOM manipulation using JavaScript
 
 Hands-on experience with modern CSS (Glassmorphism, Flexbox, Custom Inputs)
@@ -110,7 +113,7 @@ Improved skills in front-end micro-interactions and user feedback
 
 Experience in creating standalone, serverless web utilities
 
-📌 Future Improvements
+## 📌 Future Improvements
 Add a visual password strength meter (Weak, Medium, Strong)
 
 Include individual toggle checkboxes for Uppercase, Numbers, and Symbols
@@ -119,10 +122,10 @@ Deploy the project live using GitHub Pages or Vercel
 
 Implement a Dark/Light mode toggle switch
 
-🤝 Contribution
+## 🤝 Contribution
 Contributions are welcome! Feel free to fork this repository and enhance the project.
 
-📬 Contact
+## 📬 Contact
 If you found this project useful or have suggestions, feel free to connect!
 
-⭐ If you like this project, don't forget to give it a star!
+## ⭐ If you like this project, don't forget to give it a star!
