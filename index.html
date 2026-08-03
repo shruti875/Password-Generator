@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <!-- We use the "Inter" font for a clean, modern, Apple-like look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for the modern copy icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* --- CSS Reset & Base Styling --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Background Gradient with subtle pattern */
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            overflow: hidden;
+        }
+
+        /* Subtle background animation */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- Glassmorphism UI --- */
+        .glass-container {
+            width: 400px;
+            max-width: 90%;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent */
+            border-radius: 20px; /* Modern rounded corners */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Frosted glass effect */
+            backdrop-filter: blur(10px); /* The blurring effect */
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .icon {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Password Display Box */
+        .password-box {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            font-family: 'Consolas', 'Monaco', monospace; /* Monospaced for passwords */
+            font-size: 1.2rem;
+            word-break: break-all;
+            min-height: 55px;
+            position: relative;
+        }
+
+        .password-text {
+            color: rgba(255, 255, 255, 0.9);
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* "Copied!" feedback text */
+        .copy-feedback {
+            position: absolute;
+            right: 15px;
+            bottom: -20px;
+            font-size: 0.8rem;
+            color: #fff;
+            background: rgba(0, 122, 255, 0.8); /* Apple Blue */
+            padding: 3px 8px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .copy-feedback.show {
+            opacity: 1;
+        }
+
+        /* Range Slider Controls */
+        .length-control {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: #fff;
+        }
+
+        .label-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        #lengthValue {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Styling the range input (Apple-like minimalistic) */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -7px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        /* Generate Button */
+        #generateBtn {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 12px;
+            color: #333;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        #generateBtn:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        #generateBtn:active {
+            transform: translateY(1px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="glass-container">
+        <div class="header">
+            <div class="icon"><i class="fas fa-shield-alt"></i></div>
+            <h1>SecurePass</h1>
+        </div>
+
+        <div class="password-box">
+            <span id="passwordText" class="password-text">Generate to see...</span>
+            <button id="copyBtn" class="copy-btn" title="Copy to clipboard">
+                <i class="far fa-copy"></i>
+            </button>
+            <span id="copyFeedback" class="copy-feedback">Copied!</span>
+        </div>
+
+        <div class="length-control">
+            <div class="label-group">
+                <label for="lengthSlider">Password Length</label>
+                <span id="lengthValue">12</span>
+            </div>
+            <!-- Standard Apple-like range input -->
+            <input type="range" id="lengthSlider" min="6" max="32" value="12">
+        </div>
+
+        <button id="generateBtn">Create Secure Password</button>
+    </div>
+
+    <!-- --- JavaScript Logic --- -->
+    <script>
+        const passwordText = document.getElementById('passwordText');
+        const lengthSlider = document.getElementById('lengthSlider');
+        const lengthValue = document.getElementById('lengthValue');
+        const generateBtn = document.getElementById('generateBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const copyFeedback = document.getElementById('copyFeedback');
+
+        // Character pool for the password
+        const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+=-[]{}|;:',.<>?";
+
+        // Update the displayed length value when the slider moves
+        lengthSlider.addEventListener('input', function() {
+            lengthValue.textContent = this.value;
+        });
+
+        // Function to generate the simple password
+        function generatePassword() {
+            const length = lengthSlider.value;
+            let password = "";
+            for (let i = 0; i < length; i++) {
+                // Use built-in crypto for slightly better randomness in web
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                password += characters[randomIndex];
+            }
+            passwordText.textContent = password;
+            // Temporarily hide "Generate to see..." text style
+            passwordText.style.color = "rgba(255, 255, 255, 1)";
+        }
+
+        // Add event listener to the button
+        generateBtn.addEventListener('click', generatePassword);
+
+        // Copy function
+        copyBtn.addEventListener('click', function() {
+            const password = passwordText.textContent;
+            
+            // Do nothing if no password generated
+            if (password === "Generate to see...") return;
+
+            // Use the Clipboard API
+            navigator.clipboard.writeText(password).then(() => {
+                // Show feedback
+                copyFeedback.classList.add('show');
+                // Hide feedback after 1.5 seconds
+                setTimeout(() => {
+                    copyFeedback.classList.remove('show');
+                }, 1500);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
