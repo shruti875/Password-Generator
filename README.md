@@ -79,7 +79,7 @@ Added temporary "Copied!" visual feedback using CSS transitions
 
 ## 📈 Sample Visualizations
 🎬 Main Interface
-![Ouput](images/output.png)
+![Ouput](images/Output.png)
 
 ## 🚀 Bonus Feature
 A smooth, continuous 15-second animated gradient background built purely with CSS @keyframes to enhance the premium feel of the application.
